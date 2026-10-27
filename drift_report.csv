@@ -1,0 +1,6 @@
+feature,ks_statistic,p_value,drift_detected
+Age,0.14489795918367346,7.154668210875926e-14,True
+MonthlyIncome,0.18095238095238095,1.9436411552831865e-21,True
+DistanceFromHome,0.0,1.0,False
+YearsAtCompany,0.0,1.0,False
+TotalWorkingYears,0.0,1.0,False
