@@ -13,14 +13,7 @@ app.logger.setLevel(logging.INFO)
 
 BASE_DIR = Path(__file__).resolve().parent
 
-MODEL_PATH = (
-    BASE_DIR
-    / "mlruns"
-    / "1"
-    / "models"
-    / "m-98c6e0913cf246a1ad8e036db9b9486a"
-    / "artifacts"
-)
+MODEL_PATH = BASE_DIR / "model"
 
 DATASET_PATH = BASE_DIR / "employee_attrition.csv"
 
