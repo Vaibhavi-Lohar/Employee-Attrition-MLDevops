@@ -1,11 +1,10 @@
-
 from pathlib import Path
 
 import logging
 import math
 
-import mlflow.sklearn
 import pandas as pd
+import skops.io as sio
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
@@ -13,12 +12,13 @@ app.logger.setLevel(logging.INFO)
 
 BASE_DIR = Path(__file__).resolve().parent
 
-MODEL_PATH = BASE_DIR / "model"
+MODEL_PATH = BASE_DIR / "model" / "model.skops"
 
 DATASET_PATH = BASE_DIR / "employee_attrition.csv"
 
-# Load the saved model and training dataset.
-model = mlflow.sklearn.load_model(str(MODEL_PATH))
+# Load the saved model directly with skops (MLflow is not needed at runtime).
+# Only the one type recorded in model/MLmodel is trusted.
+model = sio.load(MODEL_PATH, trusted=["sklearn.tree._tree.Tree"])
 df = pd.read_csv(DATASET_PATH)
 
 # Apply the same exclusions used during training.
